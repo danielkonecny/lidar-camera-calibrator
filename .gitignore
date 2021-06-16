@@ -15,7 +15,7 @@ Data/
 out/
 
 # CLion Project files
-idea/
+.idea/
 *.cbp
 Testing/
 
