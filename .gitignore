@@ -1,5 +1,23 @@
-# Project
-.idea/
+# Project files
+
+# CMake
+CMakeFiles/
+Makefile
+CMakeCache.txt
+cmake_install.cmake
+
+# Binary files
+example_tutorial_pnp_detection
+example_tutorial_pnp_registration
+
+# Data folders
+Data/
+out/
+
+# CLion Project files
+idea/
+*.cbp
+Testing/
 
 # Prerequisites
 *.d
