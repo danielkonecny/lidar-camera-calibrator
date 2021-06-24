@@ -5,6 +5,7 @@ CMakeFiles/
 Makefile
 CMakeCache.txt
 cmake_install.cmake
+cmake-build-debug/
 
 # Binary files
 example_tutorial_pnp_detection
