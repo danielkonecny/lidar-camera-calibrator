@@ -28,7 +28,7 @@ public:
     [[maybe_unused]] void AddPoint(long long int x, long long int y, long long int z,
                                    long long int reflexivity, long long int tag, long long int timestamp);
 
-    Point GetPoint(size_t index);
+    [[maybe_unused]] Point GetPoint(size_t index);
 
     void PrintPointCloud();
 };

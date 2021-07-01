@@ -37,7 +37,7 @@ void PointCloud::AddPoint(vector<long long int> pointNumbers) {
     }
 }
 
-Point PointCloud::GetPoint(size_t index) {
+[[maybe_unused]] Point PointCloud::GetPoint(size_t index) {
     return this->pointCloud[index];
 }
 

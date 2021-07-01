@@ -26,6 +26,7 @@ private:
 
 public:
     explicit PointCloudLoader(const string& fileName);
+
     ~PointCloudLoader();
 
     PointCloud LoadFile();

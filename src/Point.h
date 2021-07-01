@@ -27,18 +27,23 @@ public:
     [[nodiscard]] long long int GetX() const;
 
     [[maybe_unused]] void SetX(long long int newX);
+
     [[nodiscard]] long long int GetY() const;
 
     [[maybe_unused]] void SetY(long long int newY);
+
     [[nodiscard]] long long int GetZ() const;
 
     [[maybe_unused]] void SetZ(long long int newZ);
+
     [[nodiscard]] long long int GetReflexivity() const;
 
     [[maybe_unused]] void SetReflexivity(long long int newReflexivity);
+
     [[nodiscard]] long long int GetTag() const;
 
     [[maybe_unused]] void SetTag(long long int newTag);
+
     [[nodiscard]] long long int GetTimestamp() const;
 
     [[maybe_unused]] void SetTimestamp(long long int newTimestamp);

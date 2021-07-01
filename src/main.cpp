@@ -13,7 +13,7 @@
 #include "main.h"
 #include "ArgumentsParser.h"
 #include "PointCloudLoader.h"
-
+#include "IMUPointsLoader.h"
 
 using namespace std;
 
@@ -34,10 +34,15 @@ int main(int argc, char *argv[]) {
         cout << "Point Cloud location: " << parser.GetPointCloudLocation() << endl;
         cout << "IMU Points location: " << parser.GetImuPointsLocation() << endl;
 
+        /*
         PointCloudLoader pointCloudLoader(parser.GetPointCloudLocation());
         PointCloud pointCloud = pointCloudLoader.LoadFile();
-
         pointCloud.PrintPointCloud();
+         */
+
+        IMUPointsLoader imuPointsLoader(parser.GetImuPointsLocation());
+        IMUPoints imuPoints = imuPointsLoader.LoadFile();
+        imuPoints.PrintIMUPoints();
     } else {
         exitCode = 1;
     }
