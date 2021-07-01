@@ -15,9 +15,8 @@
 
 using namespace std;
 
-long long int ArgumentsParser::LoadInteger(char *numberAsChars) {
+[[maybe_unused]] long long int LoadInteger(const string& numberAsString) {
     string::size_type length;
-    string numberAsString = numberAsChars;
     long long int numberAsInt;
 
     try {
@@ -39,9 +38,13 @@ long long int ArgumentsParser::LoadInteger(char *numberAsChars) {
     return numberAsInt;
 }
 
-double ArgumentsParser::LoadDouble(char *numberAsChars) {
-    string::size_type length;
+[[maybe_unused]] long long int LoadInteger(char *numberAsChars) {
     string numberAsString = numberAsChars;
+    return LoadInteger(numberAsString);
+}
+
+[[maybe_unused]] double LoadDouble(const string& numberAsString) {
+    string::size_type length;
     double numberAsDouble;
 
     try {
@@ -63,23 +66,32 @@ double ArgumentsParser::LoadDouble(char *numberAsChars) {
     return numberAsDouble;
 }
 
+[[maybe_unused]] double LoadDouble(char *numberAsChars) {
+    string numberAsString = numberAsChars;
+    return LoadDouble(numberAsString);
+}
+
 void ArgumentsParser::PrintHelp() {
     cout << "CALIBRATOR" << endl <<
-         "-h (--help)       Show help." << endl <<
-         "-I (--image)      Location of input image." << endl <<
-         "-v (--verbose)    Print information about the camera state." << endl <<
-         "-V (--video)      Location of input video." << endl;
+         "-C (--point_cloud)    Location of file with point cloud." << endl <<
+         "-h (--help)           Show help." << endl <<
+         "-I (--image)          Location of input image." << endl <<
+         "-P (--imu_points)     Location of file with IMU points." << endl <<
+         "-v (--verbose)        Print information about the camera state." << endl <<
+         "-V (--video)          Location of input video." << endl;
 }
 
 bool ArgumentsParser::ProcessArguments(int argc, char *argv[]) {
-    const char *const short_opts = "hI:vV:";
+    const char *const short_opts = "C:hI:P:vV:";
 
     const option long_opts[] = {
-            {"help",    no_argument,       nullptr, 'h'},
-            {"image",   no_argument,       nullptr, 'I'},
-            {"verbose", no_argument,       nullptr, 'v'},
-            {"video",   required_argument, nullptr, 'V'},
-            {nullptr,   no_argument,       nullptr, 0}
+            {"point_cloud", required_argument, nullptr, 'C'},
+            {"help",        no_argument,       nullptr, 'h'},
+            {"image",       required_argument, nullptr, 'I'},
+            {"imu_points",  required_argument, nullptr, 'P'},
+            {"verbose",     no_argument,       nullptr, 'v'},
+            {"video",       required_argument, nullptr, 'V'},
+            {nullptr,       no_argument,       nullptr, 0}
     };
 
     while (true) {
@@ -90,9 +102,16 @@ bool ArgumentsParser::ProcessArguments(int argc, char *argv[]) {
         }
 
         switch (opt) {
+            case 'C':
+                pointCloudLocation = optarg;
+                break;
 
-            case 'i':
+            case 'I':
                 imageLocation = optarg;
+                break;
+
+            case 'P':
+                imuPointsLocation = optarg;
                 break;
 
             case 'v':
@@ -124,4 +143,12 @@ string ArgumentsParser::GetImageLocation() {
 
 string ArgumentsParser::GetVideoLocation() {
     return videoLocation;
+}
+
+string ArgumentsParser::GetPointCloudLocation() {
+    return pointCloudLocation;
+}
+
+string ArgumentsParser::GetImuPointsLocation() {
+    return imuPointsLocation;
 }

@@ -12,6 +12,8 @@
 
 #include "main.h"
 #include "ArgumentsParser.h"
+#include "PointCloudLoader.h"
+
 
 using namespace std;
 
@@ -29,6 +31,13 @@ int main(int argc, char *argv[]) {
         }
         cout << "Image location: " << parser.GetImageLocation() << endl;
         cout << "Video location: " << parser.GetVideoLocation() << endl;
+        cout << "Point Cloud location: " << parser.GetPointCloudLocation() << endl;
+        cout << "IMU Points location: " << parser.GetImuPointsLocation() << endl;
+
+        PointCloudLoader pointCloudLoader(parser.GetPointCloudLocation());
+        PointCloud pointCloud = pointCloudLoader.LoadFile();
+
+        pointCloud.PrintPointCloud();
     } else {
         exitCode = 1;
     }

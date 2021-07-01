@@ -12,7 +12,7 @@ add_executable(
         Calibrator
         src/main.cpp src/main.h
         src/ArgumentsParser.cpp src/ArgumentsParser.h
-)
+        src/Point.cpp src/Point.h src/PointCloud.cpp src/PointCloud.h src/PointCloudLoader.cpp src/PointCloudLoader.h)
 
 target_link_libraries(
         Calibrator
